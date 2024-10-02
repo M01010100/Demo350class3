@@ -1,0 +1,30 @@
+
+CREATE TABLE Course
+(
+  CRN   INT NOT NULL,
+  title VARCHAR NULL,
+  PRIMARY KEY (CRN)
+);
+
+CREATE TABLE Std_CSE
+(
+  uid INT NOT NULL,
+  CRN INT NOT NULL
+);
+
+CREATE TABLE Student
+(
+  uid        INT     NOT NULL,
+  first_name VARCHAR NULL    ,
+  PRIMARY KEY (uid)
+);
+
+ALTER TABLE Std_CSE
+  ADD CONSTRAINT FK_Student_TO_Std_CSE
+    FOREIGN KEY (uid)
+    REFERENCES Student (uid);
+
+ALTER TABLE Std_CSE
+  ADD CONSTRAINT FK_Course_TO_Std_CSE
+    FOREIGN KEY (CRN)
+    REFERENCES Course (CRN);
